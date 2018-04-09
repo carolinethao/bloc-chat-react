@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 class User extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			user: null,
-		}
 
 		this.logIn = this.logIn.bind(this);
 		this.logOut = this.logOut.bind(this);

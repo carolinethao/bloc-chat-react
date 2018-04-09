@@ -6,12 +6,12 @@ import User from './components/User';
 import * as firebase from 'firebase';
 
 const config = {
-  apiKey: "AIzaSyA_u88deiCGlam5wAQkf0KSL64JD6j7b58",
-  authDomain: "bloc-chat-1234.firebaseapp.com",
-  databaseURL: "https://bloc-chat-1234.firebaseio.com",
-  projectId: "bloc-chat-1234",
-  storageBucket: "bloc-chat-1234.appspot.com",
-  messagingSenderId: "689314273567"
+	apiKey: 'AIzaSyA_u88deiCGlam5wAQkf0KSL64JD6j7b58',
+	authDomain: 'bloc-chat-1234.firebaseapp.com',
+	databaseURL: 'https://bloc-chat-1234.firebaseio.com',
+	projectId: 'bloc-chat-1234',
+	storageBucket: 'bloc-chat-1234.appspot.com',
+	messagingSenderId: '689314273567',
 };
 
 firebase.initializeApp(config);
@@ -22,7 +22,7 @@ class App extends Component {
 
 		this.state = {
 			activeRoom: '',
-      user: null,
+			user: null,
 		};
 	}
 
@@ -30,18 +30,18 @@ class App extends Component {
 		this.setState({ activeRoom: room });
 	}
 
-  setUser(user) {
-    this.setState({ user: user });
-  }
+	setUser(user) {
+		this.setState({ user: user });
+	}
 
-  render() {
-    return (
-      <div className="App">
-        <User
-          firebase={firebase}
-          setUser={this.setUser.bind(this)}
-          user={ this.state.user ? this.state.user.displayName : "Guest"}
-          />
+	render() {
+		return (
+			<div className="App">
+				<User
+					firebase={firebase}
+					setUser={this.setUser.bind(this)}
+					user={this.state.user ? this.state.user.displayName : 'Guest'}
+				/>
 				<RoomList
 					firebase={firebase}
 					activeRoom={this.setActiveRoom.bind(this)}
@@ -51,12 +51,13 @@ class App extends Component {
 
 					<MessageList
 						firebase={firebase}
-						activeRoom={this.state.activeRoom.key}
+						activeRoom={this.state.activeRoom}
+						user={this.state.user ? this.state.user.displayName : 'Guest'}
 					/>
 				</section>
 			</div>
-    );
-  }
+		);
+	}
 }
 
 export default App;
